@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOMI CAFE MENU | منيو سومي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --somi-purple-header: #4F1D4F; 
+            --somi-pink-bg: #EBBAD7;       
+            --somi-card-bg: #FFFFFF;      
+            --somi-text-dark: #2C1A2C;     
+            --somi-purple-accent: #6C3483; 
+            --star-gold: #F1C40F;
+        }
+
+        body {
+            font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--somi-pink-bg);
+            color: var(--somi-text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--somi-purple-header);
+            color: white;
+            text-align: center;
+            padding: 55px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        header .en-title {
+            margin: 5px 0 0 0;
+            font-size: 2.2rem;
+            letter-spacing: 4px;
+            font-weight: 900; 
+            color: #FADBD8;
+        }
+
+        .brand-slogan {
+            font-family: 'Aref Ruqaa', 'Diwan', serif;
+            font-size: 2.3rem; 
+            color: #FFFFFF;
+            display: block;
+            margin: 25px 0 15px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+            font-weight: 400; 
+            letter-spacing: 0.5px;
+        }
+
+        .intro-text {
+            max-width: 500px;
+            margin: 0 auto;
+            font-size: 1rem;
+            color: #F5EEF8;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .main-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .search-container {
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: 2px solid var(--somi-purple-header);
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 6px 20px rgba(79, 29, 79, 0.15);
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus {
+            background-color: #ffffff;
+            box-shadow: 0 6px 25px rgba(79, 29, 79, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.3rem;
+            color: var(--somi-purple-header);
+            pointer-events: none;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            font-weight: 700;
+            color: var(--somi-purple-header);
+            display: none;
+            margin-bottom: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        details {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 22px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 2px solid var(--somi-purple-header);
+            box-shadow: 0 4px 15px rgba(79, 29, 79, 0.08);
+            transition: background-color 0.4s ease;
+        }
+
+        details[open] {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        summary {
+            background-color: var(--somi-purple-header);
+            color: white;
+            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            cursor: pointer;
+            outline: none;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none; 
+        }
+
+        /* 🔄 التعديل المطلوب: إعدادات الرموز التفاعلية عند الضغط */
+        summary::after {
+            font-size: 1.4rem;
+            display: inline-block;
+            transition: transform 0.3s ease-in-out; /* حركة التفاف ناعمة وسلسة */
+        }
+
+        /* عندما ينفتح القسم يلتف الرمز 45 درجة فقط ويقف */
+        details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        /* تخصيص الرموز للأقسام بناءً على الـ ID المختار */
+        #drinks-section summary::after {
+            content: "☕";
+        }
+
+        #sweets-section summary::after {
+            content: "🍪";
+        }
+
+        #icecream-section summary::after {
+            content: "🍦";
+        }
+
+        #toppings-section summary::after {
+            content: "🍯";
+        }
+
+        .details-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            opacity: 0;
+            transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, padding 0.4s ease;
+        }
+
+        details[open] .details-content {
+            grid-template-rows: 1fr;
+            opacity: 1;
+            padding-bottom: 15px;
+        }
+
+        .details-inner {
+            overflow: hidden;
+        }
+
+        .sub-category-box {
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(79, 29, 79, 0.15);
+            border-radius: 18px;
+            margin: 15px;
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(79, 29, 79, 0.03);
+        }
+
+        .sub-category {
+            background-color: rgba(79, 29, 79, 0.05);
+            padding: 10px 15px;
+            margin: 0 15px 12px 15px;
+            border-radius: 12px;
+            border-right: 5px solid var(--somi-purple-accent);
+        }
+
+        .category-title {
+            font-size: 1.15rem;
+            font-weight: 900; 
+            color: var(--somi-purple-header);
+            margin: 0;
+            letter-spacing: -0.3px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 0 15px;
+        }
+
+        .menu-item-card {
+            background: var(--somi-card-bg);
+            border-radius: 16px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(79, 29, 79, 0.04);
+            border: 1px solid rgba(79, 29, 79, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            min-height: 90px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .menu-item-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(79, 29, 79, 0.1);
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+            margin-bottom: 8px;
+        }
+
+        .item-name {
+            font-weight: 700; 
+            font-size: 0.95rem;
+            color: var(--somi-text-dark);
+            letter-spacing: -0.4px;
+            line-height: 1.4;
+        }
+
+        .item-price {
+            font-weight: 800; 
+            font-size: 0.95rem;
+            letter-spacing: -0.3px;
+            color: white;
+            white-space: nowrap;
+            background-color: var(--somi-purple-accent);
+            padding: 4px 14px;
+            border-radius: 20px;
+            box-shadow: 0 3px 6px rgba(108, 52, 131, 0.15);
+            width: fit-content;
+        }
+
+        .reviews-section {
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 2px solid var(--somi-purple-header);
+            border-radius: 22px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 6px 18px rgba(79, 29, 79, 0.08);
+        }
+
+        .reviews-section h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--somi-purple-header);
+            text-align: center;
+        }
+
+        .reviews-section .en-reviews-title {
+            display: block;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--somi-purple-accent);
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .review-form {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            color: var(--somi-text-dark);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(79, 29, 79, 0.2);
+            border-radius: 10px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: var(--somi-purple-header);
+        }
+
+        .star-rating-widget {
+            display: flex;
+            gap: 8px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            margin: 5px 0;
+            direction: ltr;
+            justify-content: flex-end;
+        }
+
+        .star-rating-widget span {
+            color: #ccc;
+            transition: color 0.2s ease;
+        }
+
+        .star-rating-widget span.active,
+        .star-rating-widget span:hover,
+        .star-rating-widget span:hover ~ span {
+            color: var(--star-gold);
+        }
+
+        .submit-review-btn {
+            background-color: var(--somi-purple-header);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(79, 29, 79, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .submit-review-btn:hover {
+            background-color: var(--somi-purple-accent);
+            transform: translateY(-2px);
+        }
+
+        .reviews-container {
+            max-height: 350px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .reviews-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .reviews-container::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border-radius: 10px;
+        }
+
+        .reviews-container::-webkit-scrollbar-thumb {
+            background: var(--somi-purple-header);
+            border-radius: 10px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 15px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.03);
+            border: 1px solid rgba(79, 29, 79, 0.05);
+            animation: slideDown 0.4s ease;
+        }
+
+        .review-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .reviewer-name {
+            font-weight: 700;
+            color: var(--somi-purple-header);
+            font-size: 1rem;
+        }
+
+        .review-stars {
+            color: var(--star-gold);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .review-text {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .feedback-card {
+            background: linear-gradient(135deg, var(--somi-purple-header), var(--somi-purple-accent));
+            color: white;
+            padding: 25px 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(79, 29, 79, 0.2);
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feedback-card p {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.8;
+        }
+
+        .feedback-card .en-feedback {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: #FADBD8;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .tax-notice-card {
+            background-color: rgba(79, 29, 79, 0.08);
+            border: 1px dashed var(--somi-purple-header);
+            color: var(--somi-purple-header);
+            padding: 15px;
+            border-radius: 14px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .tax-notice-card .en-tax {
+            display: block;
+            font-size: 0.85rem;
+            margin-top: 4px;
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        .social-media-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+            align-items: center;
+        }
+
+        .social-buttons-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .tiktok-btn {
+            background-color: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .whatsapp-text-card {
+            background-color: #ffffff;
+            border: 2px solid #25D366;
+            border-radius: 18px;
+            width: 100%;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.12);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .whatsapp-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #20ba5a;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .whatsapp-title-wrapper svg {
+            width: 22px;
+            height: 22px;
+            fill: #25D366;
+        }
+
+        .whatsapp-number-display {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--somi-purple-header);
+            letter-spacing: 1px;
+            margin: 4px 0;
+            direction: ltr; 
+        }
+
+        .whatsapp-note-text {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 10px 40px 10px;
+            color: var(--somi-purple-header);
+        }
+
+        footer .location-footer {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                padding: 0 10px;
+            }
+            .sub-category-box {
+                margin: 10px 8px;
+                padding: 12px 0;
+            }
+            .brand-slogan {
+                font-size: 1.9rem; 
+            }
+            .whatsapp-number-display {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>سومي كافيه</h1>
+        <div class="en-title">SOMI CAFE</div>
+        <span class="brand-slogan">شغف مبتكر، ونكهات تأسر الحواس ✨☕️</span>
+        <div class="intro-text">
+            وجهتكم الاستثنائية لأجود أنواع القهوة المختصة والحلويات المستوحاة من الثقافة الآسيوية الحديثة. نتميز بتقديم الآيس كريم الناعم (Soft Serve) بنكهاتنا الخاصة الحصرية، والحلويات الخفيفة المخبوزة يومياً بحب لترضي ذوقكم الرفيع وتصنع يومكم.
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="search-container">
+            <input type="text" id="menuSearch" class="search-bar" placeholder="ابحث عن مشروب، حلى، ماتشا... Search...">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <div id="noResultsMessage" class="no-results">
+            ❌ عذراً، لم نجد أي منتج يطابق بحثك.. جرب كلمة أخرى!
+        </div>
+
+        <!-- القسم الأول: المشروبات -->
+        <details class="menu-section" id="drinks-section">
+            <summary>🥤 المشروبات والمنعشات | Drinks & Tea</summary>
+            <div class="details-content">
+                <div class="details-inner">
+                    
+                    <!-- 1. قهوة ساخنة -->
+                    <div class="sub-category-box">
+                        <div class="sub-category">
+                            <div class="category-title">1. قهوة ساخنة | Hot Coffee ☕</div>
+                        </div>
+                        <div class="grid-container">
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">اسبريسو / Espresso</span>
+                                </div>
+                                <span class="item-price">1.2 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">أمريكانو / Americano</span>
+                                </div>
+                                <span class="item-price">1.5 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">بيكولو / Piccolo</span>
+                                </div>
+                                <span class="item-price">1.6 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">كورتادو / Cortado</span>
+                                </div>
+                                <span class="item-price">1.8 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">فلات وايت / Flat white</span>
+                                </div>
+                                <span class="item-price">1.9 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">كابتشينو / Cappuccino</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">موكا / Mocha</span>
+                                </div>
+                                <span class="item-price">2.3 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">سبانيش لاتيه / Spanish Latte</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">لاتيه الفستق / Pistachio Latte</span>
+                                </div>
+                                <span class="item-price">2.5 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">لاتيه كاراميل / Caramel Latte</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">لاتيه فانيلا / Vanilla Latte</span>
+                                </div>
+                                <span class="item-price">2.2 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شوكولاتة ساخنة / Hot Chocolate</span>
+                                </div>
+                                <span class="item-price">2.2 OMR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. قهوة مثلجة -->
+                    <div class="sub-category-box">
+                        <div class="sub-category">
+                            <div class="category-title">2. قهوة مثلجة | Iced Coffee 🧊</div>
+                        </div>
+                        <div class="grid-container">
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">أمريكانو مثلج / Iced Americano</span>
+                                </div>
+                                <span class="item-price">1.6 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">لاتيه مثلج / Iced Latte</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">وايت موكا / White Mocha</span>
+                                </div>
+                                <span class="item-price">2.4 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">دارك موكا / Dark Mocha</span>
+                                </div>
+                                <span class="item-price">2.4 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">سبانيش لاتيه / Iced Spanish Latte</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">لاتيه فستق / Iced Pistachio Latte</span>
+                                </div>
+                                <span class="item-price">2.5 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">لاتيه كاراميل / Iced Caramel Latte</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">لاتيه فانيلا / Iced Vanilla Latte</span>
+                                </div>
+                                <span class="item-price">2.2 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">لاتيه زعفران / Saffron Latte</span>
+                                </div>
+                                <span class="item-price">2.2 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">لاتيه الورد / Rose Latte</span>
+                                </div>
+                                <span class="item-price">2.2 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شوكولاتة مثلجة / Cold Chocolate</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. قهوة مقطرة -->
+                    <div class="sub-category-box">
+                        <div class="sub-category">
+                            <div class="category-title">3. قهوة مقطرة | Drip Coffee ☕💨</div>
+                        </div>
+                        <div class="grid-container">
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">في 60 / V60</span>
+                                </div>
+                                <span class="item-price">2.1 OMR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. ماتشا -->
+                    <div class="sub-category-box">
+                        <div class="sub-category">
+                            <div class="category-title">4. ماتشا | Matcha 🍵</div>
+                        </div>
+                        <div class="grid-container">
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">ماتشا لاتيه / Matcha Latte</span>
+                                </div>
+                                <span class="item-price">2.3 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">أوبي ماتشا / UBE Matcha</span>
+                                </div>
+                                <span class="item-price">2.5 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">ماتشا الكراميل / Caramel Matcha</span>
+                                </div>
+                                <span class="item-price">2.4 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">موكا ماتشا / Mocha Matcha</span>
+                                </div>
+                                <span class="item-price">2.4 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">ماتشا بالفراولة / Strawberry Matcha</span>
+                                </div>
+                                <span class="item-price">2.4 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">ماتشا بالمانجو / Mango Matcha</span>
+                                </div>
+                                <span class="item-price">2.4 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">هلو كيتي ماتشا / Hello Kitty Matcha</span>
+                                </div>
+                                <span class="item-price">2.4 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">ماتشا بجوز الهند / Coconut Matcha</span>
+                                </div>
+                                <span class="item-price">2.4 OMR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. شاي مثلج -->
+                    <div class="sub-category-box">
+                        <div class="sub-category">
+                            <div class="category-title">5. شاي مثلج | Iced Tea 🍹</div>
+                        </div>
+                        <div class="grid-container">
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شاي مثلج كلاسيكي / Classic Iced Tea</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شاي مثلج مانجو باشن / Mango Passion</span>
+                                </div>
+                                <span class="item-price">2.2 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شاي مثلج مانجو خوخ / Mango Peach</span>
+                                </div>
+                                <span class="item-price">2.2 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شاي مثلج توت بري / Cranberry Iced Tea</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شاي مثلج فراولة / Strawberry Iced Tea</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شاي مثلج ليمون نعناع / Lemon Mint</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. شاي الأعشاب الفاخر -->
+                    <div class="sub-category-box">
+                        <div class="sub-category">
+                            <div class="category-title">6. شاي الأعشاب الفاخر | Premium Herbal Tea 🫖</div>
+                        </div>
+                        <div class="grid-container">
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شاي الياسمين الياباني / Japanese Jasmine Tea</span>
+                                </div>
+                                <span class="item-price">3.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شاي التوت الياباني / Japanese Mix Berries</span>
+                                </div>
+                                <span class="item-price">2.3 OMR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </details>
+
+        <!-- القسم الثاني: آيسكريم تاياكي -->
+        <details class="menu-section" id="icecream-section">
+            <summary>🍦 آيسكريم تاياكي | Taiyaki Soft Serve</summary>
+            <div class="details-content">
+                <div class="details-inner">
+                    
+                    <div class="sub-category-box">
+                        <div class="sub-category">
+                            <div class="category-title">آيسكريم تاياكي | Taiyaki Soft Serve 🐟</div>
+                        </div>
+                        <div class="grid-container">
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">أوبي (بطعم الحلوة اليابانية) / UBE</span>
+                                </div>
+                                <span class="item-price">2.2 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شوكولاتة بالحليب / Milk Chocolate</span>
+                                </div>
+                                <span class="item-price">1.8 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">يونيكورن / Unicorn</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">مانجو باشن / Mango-passion</span>
+                                </div>
+                                <span class="item-price">2.2 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">أي مزيج من النكهتين / Any 2 mixed</span>
+                                </div>
+                                <span class="item-price">2.0 OMR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </details>
+
+        <!-- القسم الثالث: الحلويات والكوكيز -->
+        <details class="menu-section" id="sweets-section">
+            <summary>🍰 الحلويات والكوكيز | Desserts & Cookies</summary>
+            <div class="details-content">
+                <div class="details-inner">
+                    
+                    <!-- الحلويات الفاخرة -->
+                    <div class="sub-category-box">
+                        <div class="sub-category">
+                            <div class="category-title">حلويات فاخرة | Signature Desserts ✨</div>
+                        </div>
+                        <div class="grid-container">
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">تشيز كيك ياباني / Japanese Cheesecake</span>
+                                </div>
+                                <span class="item-price">1.8 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">سان سيباستيان / San Sebastian</span>
+                                </div>
+                                <span class="item-price">2.5 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">جبنة توم وجيري / Tom and Jerry 🧀</span>
+                                </div>
+                                <span class="item-price">1.8 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">كيكة ماتيلدا / Matilda Cake</span>
+                                </div>
+                                <span class="item-price">3.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">حلم الدب النائم / Yumemiru Kuma 🧸</span>
+                                </div>
+                                <span class="item-price">1.8 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">فدجي براوني / Fudgy Brownies</span>
+                                </div>
+                                <span class="item-price">2.1 OMR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- قسم الكوكيز -->
+                    <div class="sub-category-box">
+                        <div class="sub-category">
+                            <div class="category-title">كوكيز طازج | Cookies 🍪</div>
+                        </div>
+                        <div class="grid-container">
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شوكولاتة بالحليب / Milk Chocolate Cookies</span>
+                                </div>
+                                <span class="item-price">1.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">الشوكولاتة المضاعفة / Double Chocolate</span>
+                                </div>
+                                <span class="item-price">1.2 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">ماربل يونيكورن كوكيز / Marble Unicorn</span>
+                                </div>
+                                <span class="item-price">1.3 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">ماتشا كوكيز / Matcha Cookies</span>
+                                </div>
+                                <span class="item-price">1.0 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">كوكيز المزاج / Mood Cookies</span>
+                                </div>
+                                <span class="item-price">1.3 OMR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </details>
+
+        <!-- القسم الرابع: الإضافات والتوبينجز -->
+        <details class="menu-section" id="toppings-section">
+            <summary>🍯 إضافات وتوبينجز | Extra Toppings</summary>
+            <div class="details-content">
+                <div class="details-inner">
+                    
+                    <div class="sub-category-box">
+                        <div class="sub-category">
+                            <div class="category-title">قائمة الإضافات والصلصات | Toppings List 🥞</div>
+                        </div>
+                        <div class="grid-container">
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">فستق / Pistachio</span>
+                                </div>
+                                <span class="item-price">0.5 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">كاراميل / Caramel</span>
+                                </div>
+                                <span class="item-price">0.4 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شوكولاتة بيضاء / White chocolate</span>
+                                </div>
+                                <span class="item-price">0.3 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">شوكولاتة بالحليب / Milk chocolate</span>
+                                </div>
+                                <span class="item-price">0.3 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">فراولة / Strawberry</span>
+                                </div>
+                                <span class="item-price">0.2 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">توت أحمر / Raspberry</span>
+                                </div>
+                                <span class="item-price">0.2 OMR</span>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="item-info">
+                                    <span class="item-name">آيسكريم فانيلا / Vanilla Icecream</span>
+                                </div>
+                                <span class="item-price">0.3 OMR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </details>
+
+        <!-- نظام التقييمات التفاعلي -->
+        <div class="reviews-section">
+            <h3>💬 شاركنا رأيك وتجربتك</h3>
+            <span class="en-reviews-title">Guest Reviews & Feedback</span>
+            <div class="review-form">
+                <div class="form-group">
+                    <label>التقييم بالنجوم / Rating:</label>
+                    <div class="star-rating-widget" id="starWidget">
+                        <span data-value="5">★</span><span data-value="4">★</span><span data-value="3">★</span><span data-value="2">★</span><span data-value="1">★</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>رأيك في المنتجات والخدمة / Your Review:</label>
+                    <input type="text" id="reviewComment" class="form-input" placeholder="ما هو رأيك في منتجاتنا وخدمتنا؟">
+                </div>
+                <button type="button" id="submitReviewBtn" class="submit-review-btn">إرسال التقييم / Submit</button>
+            </div>
+            <div class="reviews-container" id="reviewsContainer"></div>
+        </div>
+
+        <div class="feedback-card">
+            <p>💡 يسعدنا دائماً سماع رأيكم! إذا كان لديكم أي ملاحظة، أو رغبة في إضافة نكهة أو منتج غير متوفر في المنيو، يرجى إبلاغ فريقنا فوراً.. نحن هنا لخدمتكم وتلبية أذواقكم ✨</p>
+            <span class="en-feedback">Your feedback drives our innovation! If there's anything you'd like to see on our menu, or if you have any suggestions, please let our team know.</span>
+        </div>
+
+        <div class="tax-notice-card">
+            📢 تنويه: جميع الأسعار المذكورة أعلاه في المنيو غير شاملة لضريبة القيمة المضافة (5%).
+            <span class="en-tax">Please note: All menu prices listed above are exclusive of 5% Value Added Tax (VAT).</span>
+        </div>
+
+        <div class="social-media-container">
+            <div class="whatsapp-text-card">
+                <div class="whatsapp-title-wrapper">
+                    <svg viewBox="0 0 448 512">
+                        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                    </svg>
+                    <span>رقم الواتساب للطلب والاستفسار:</span>
+                </div>
+                <div class="whatsapp-number-display">+968 7171 8367</div>
+                <p class="whatsapp-note-text">يمكنك حفظ الرقم لديك لإرسال اقتراحاتك أو طلباتك الخارجية مباشرة</p>
+            </div>
+            <div class="social-buttons-row">
+                <a href="https://instagram.com/somi_oman" target="_blank" class="social-btn instagram-btn">📸 انستغرام | Instagram</a>
+                <a href="https://tiktok.com/@somi.oman" target="_blank" class="social-btn tiktok-btn">🎵 تيك توك | TikTok</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <span class="location-footer">Mall of Oman, Third Floor - Food Court</span>
+        <p>© 2026 SOMI CAFE. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('details').forEach((el) => {
+            const summary = el.querySelector('summary');
+            const content = el.querySelector('.details-content');
+            summary.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                if (el.open) {
+                    content.style.gridTemplateRows = '0fr';
+                    content.style.opacity = '0';
+                    setTimeout(() => { el.open = false; }, 400);
+                } else {
+                    el.open = true;
+                    requestAnimationFrame(() => {
+                        content.style.gridTemplateRows = '1fr';
+                        content.style.opacity = '1';
+                    });
+                }
+            });
+        });
+
+        const searchInput = document.getElementById('menuSearch');
+        const menuSections = document.querySelectorAll('.menu-section');
+        const noResultsMessage = document.getElementById('noResultsMessage');
+
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            let totalVisibleItems = 0;
+
+            if (searchTerm === "") {
+                noResultsMessage.style.display = 'none';
+                menuSections.forEach(section => {
+                    section.style.display = 'block';
+                    section.querySelectorAll('.menu-item-card').forEach(card => card.style.display = 'flex');
+                    section.querySelectorAll('.sub-category-box').forEach(box => box.style.display = 'block');
+                    const content = section.querySelector('.details-content');
+                    content.style.gridTemplateRows = '0fr';
+                    content.style.opacity = '0';
+                    section.open = false;
+                });
+                return;
+            }
+
+            menuSections.forEach(section => {
+                let matchInSection = false;
+                const subBoxes = section.querySelectorAll('.sub-category-box');
+                const cards = section.querySelectorAll('.menu-item-card');
+                
+                cards.forEach(card => {
+                    const itemName = card.querySelector('.item-name').textContent.toLowerCase();
+                    if (itemName.includes(searchTerm)) {
+                        card.style.display = 'flex';
+                        matchInSection = true;
+                        totalVisibleItems++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (subBoxes.length > 0) {
+                    subBoxes.forEach(box => {
+                        const internalCards = box.querySelectorAll('.menu-item-card');
+                        let visibleCardsInBox = 0;
+                        internalCards.forEach(c => { if (c.style.display === 'flex') visibleCardsInBox++; });
+                        box.style.display = (visibleCardsInBox === 0) ? 'none' : 'block';
+                    });
+                }
+
+                if (matchInSection) {
+                    section.style.display = 'block';
+                    section.open = true;
+                    const content = section.querySelector('.details-content');
+                    content.style.gridTemplateRows = '1fr';
+                    content.style.opacity = '1';
+                } else {
+                    section.style.display = 'none';
+                    section.open = false;
+                }
+            });
+
+            noResultsMessage.style.display = (totalVisibleItems === 0) ? 'block' : 'none';
+        });
+
+        const stars = document.querySelectorAll('#starWidget span');
+        let selectedRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                selectedRating = parseInt(this.getAttribute('data-value'));
+                updateStarsDisplay(selectedRating);
+            });
+        });
+
+        function updateStarsDisplay(rating) {
+            stars.forEach(star => {
+                star.classList.toggle('active', parseInt(star.getAttribute('data-value')) <= rating);
+            });
+        }
+
+        const reviewsContainer = document.getElementById('reviewsContainer');
+        
+        function loadStoredReviews() {
+            const storedReviews = JSON.parse(localStorage.getItem('somi_reviews')) || [];
+            storedReviews.forEach(review => { renderReviewCard(review.rating, review.comment); });
+        }
+
+        function renderReviewCard(rating, comment) {
+            const card = document.createElement('div');
+            card.className = 'review-card';
+            card.innerHTML = `
+                <div class="review-card-header">
+                    <span class="reviewer-name">زائر كريم</span>
+                    <span class="review-stars">${'★'.repeat(rating)}${'☆'.repeat(5-rating)}</span>
+                </div>
+                <p class="review-text">${escapeHtml(comment)}</p>
+            `;
+            reviewsContainer.insertBefore(card, reviewsContainer.firstChild);
+        }
+
+        document.getElementById('submitReviewBtn').addEventListener('click', function() {
+            const commentInput = document.getElementById('reviewComment');
+            const comment = commentInput.value.trim();
+
+            if (!comment) return alert("تنبيه: يرجى ملء حقل التعليق والملحوظة قبل الإرسال! 😊");
+            if (selectedRating === 0) return alert("تنبيه: يرجى اختيار التقييم بالنجوم! ⭐️");
+
+            renderReviewCard(selectedRating, comment);
+
+            const storedReviews = JSON.parse(localStorage.getItem('somi_reviews')) || [];
+            storedReviews.push({ rating: selectedRating, comment });
+            localStorage.setItem('somi_reviews', JSON.stringify(storedReviews));
+
+            commentInput.value = "";
+            selectedRating = 0;
+            updateStarsDisplay(0);
+            reviewsContainer.scrollTop = 0;
+        });
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+        }
+
+        window.addEventListener('DOMContentLoaded', loadStoredReviews);
+    </script>
+</body>
+</html>
