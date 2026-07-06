@@ -1,2 +1,2 @@
 # Somi_menu
-Somi cafe menu
+Somi Cafe menu.
